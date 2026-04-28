@@ -9,16 +9,14 @@ import type { SheetsConfig } from "@/types/sheets";
 export const SHEETS_CONFIG: SheetsConfig = {
   spreadsheetId: process.env.GOOGLE_SHEET_ID!,
   sheets: [
-    { name: "Hoja1", range: "A:Z", displayName: "Principal" },
-    // Agrega más hojas según tu spreadsheet:
-    // { name: "Clientes", range: "A:Z", displayName: "Clientes" },
-    // { name: "Proyectos", range: "A:Z", displayName: "Proyectos" },
+    // "Sheet1" es el nombre por defecto cuando Google Drive convierte un CSV
+    { name: "Sheet1", range: "A:Z", displayName: "Clientes" },
   ],
   kpis: [
-    { label: "Total Registros", sheet: "Hoja1", fn: "COUNT", icon: "hash" },
-    // Ejemplos con COUNT_WHERE (cuenta filas donde columna = valor):
-    // { label: "Activos", sheet: "Hoja1", fn: "COUNT_WHERE", column: "Estado", value: "Activo", icon: "check-circle" },
-    // { label: "Pendientes", sheet: "Hoja1", fn: "COUNT_WHERE", column: "Estado", value: "Pendiente", icon: "clock" },
+    { label: "Total Clientes", sheet: "Sheet1", fn: "COUNT", icon: "users" },
+    { label: "Activos",        sheet: "Sheet1", fn: "COUNT_WHERE", column: "Estado", value: "Activo",     icon: "check-circle" },
+    { label: "Pendientes",     sheet: "Sheet1", fn: "COUNT_WHERE", column: "Estado", value: "Pendiente",  icon: "clock" },
+    { label: "New",            sheet: "Sheet1", fn: "COUNT_WHERE", column: "Estado", value: "New",        icon: "trending" },
   ],
 };
 

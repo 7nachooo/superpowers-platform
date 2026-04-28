@@ -9,7 +9,7 @@ import { useSheetData } from "@/hooks/useSheets";
 const POLL = parseInt(process.env.NEXT_PUBLIC_POLL_INTERVAL ?? "15000", 10);
 
 // Cambia "Hoja1" por el nombre real de tu hoja principal
-const DEFAULT_SHEET = process.env.NEXT_PUBLIC_DEFAULT_SHEET ?? "Hoja1";
+const DEFAULT_SHEET = process.env.NEXT_PUBLIC_DEFAULT_SHEET ?? "Sheet1";
 
 export default function Dashboard() {
   const [activeSheet, setActiveSheet] = useState(DEFAULT_SHEET);
