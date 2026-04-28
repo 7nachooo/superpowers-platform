@@ -1,11 +1,17 @@
 import { google } from "googleapis";
 import type { Row } from "@/types/sheets";
 
+function decodePrivateKey(raw: string): string {
+  // Acepta base64, \n escapados, o saltos de línea reales
+  try {
+    const decoded = Buffer.from(raw, "base64").toString("utf-8");
+    if (decoded.includes("BEGIN PRIVATE KEY")) return decoded;
+  } catch {}
+  return raw.replace(/\\n/g, "\n");
+}
+
 function getAuth() {
-  const privateKey = (process.env.GOOGLE_PRIVATE_KEY ?? "").replace(
-    /\\n/g,
-    "\n"
-  );
+  const privateKey = decodePrivateKey(process.env.GOOGLE_PRIVATE_KEY ?? "");
   return new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
