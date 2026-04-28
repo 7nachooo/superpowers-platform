@@ -7,8 +7,8 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_APP_TITLE ?? "Superpowers Dashboard",
-  description: "Dashboard en tiempo real con datos de Google Sheets",
+  title: "Scuffers · Dashboard",
+  description: "Scuffers.co — CRM y dashboard en tiempo real con Google Sheets",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
